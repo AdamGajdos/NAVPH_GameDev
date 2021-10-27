@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class Kontroler : MonoBehaviour
 {
-
-    public float rychlost = 5f;
+    private float rychlostNormal = 5f;
+    private float rychlostSprint = 8f;
     public float silaSkoku = 300f;
-    
+
+    public float rychlost;
+    private bool smerVpravo;
+
+    public bool getSmerVpravo() { return smerVpravo; }
+
     private Vector2 posun;
     private Rigidbody2D rb;
     private BoxCollider2D mojCollider;
+    private GameObject hlaven;
 
     // Start is called before the first frame update
     void Start()
     {
+        rychlost = rychlostNormal;
+        smerVpravo = true;
         posun = Vector2.zero;
         rb = GetComponent<Rigidbody2D>();
         mojCollider = GetComponent<BoxCollider2D>();
+        hlaven = GameObject.Find("Hlaven");
     }
 
     // Update is called once per frame
@@ -27,15 +36,33 @@ public class Kontroler : MonoBehaviour
         
         posun = new Vector2(vpred * rychlost, rb.velocity.y);
 
-        
+        if (vpred > 0 && !smerVpravo)
+        {
+            otoc();
+        }
+        else if (vpred < 0 && smerVpravo)
+        {
+            otoc();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && jeNaZemi())
         {
             rb.AddForce(Vector2.up * silaSkoku);
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.RightControl))
         {
-            otoc();
+            hlaven.GetComponent<HlavenKontroler>().vystrel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            rychlost = rychlostSprint;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            rychlost = rychlostNormal;
         }
 
     }
@@ -77,6 +104,7 @@ public class Kontroler : MonoBehaviour
 
     private void otoc()
     {
+        smerVpravo = !smerVpravo;
         transform.Rotate(Vector2.up, 180f);
     }
 }
