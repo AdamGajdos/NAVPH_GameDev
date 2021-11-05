@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3794306862407442027}
   - component: {fileID: 6965020366757549326}
   - component: {fileID: 1147874646912966313}
-  - component: {fileID: 5829481821476835559}
+  - component: {fileID: 4580282825754248771}
   m_Layer: 0
-  m_Name: Naboj
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5829481821476835559
+--- !u!114 &4580282825754248771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
