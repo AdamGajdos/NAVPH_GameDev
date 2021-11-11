@@ -31,11 +31,11 @@ public class BulletController : MonoBehaviour
 
         if (coll.gameObject.tag == "Head"){
             Debug.Log("Zober viac zdravia");
-            // coll.gameObject.GetComponentInParent<Health>().takeDamge(headDamage); 
+            coll.gameObject.GetComponentInParent<Health>().HandleHit(headDamage); 
         }
         else if (coll.gameObject.tag == "Body"){
             Debug.Log("Zober zdravie");
-            // coll.gameObject.GetComponentInParent<Health>().takeDamge(bodyDamage);
+            coll.gameObject.GetComponentInParent<Health>().HandleHit(bodyDamage);
         }
 
         if (coll.gameObject.tag != "Soldier"){
