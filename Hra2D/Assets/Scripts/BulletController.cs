@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+
+    public float headDamage;
+    public float bodyDamage;
+
     [SerializeField]
     private Rigidbody2D rb;
     private float shotForce = 350f;
-    private float deletionTimeAfterHit = 0.5f;
+    // private float deletionTimeAfterHit = 0.5f;
 
     // Update is called once per frame
     void Start()
@@ -18,8 +22,24 @@ public class BulletController : MonoBehaviour
     }
 
     // pridat efekt zasahu
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(this, deletionTimeAfterHit);
+    // private void OnTriggerEnter2D()
+    // {
+    //     Destroy(this);
+    // }
+
+    private void OnTriggerEnter2D(Collider2D coll){
+
+        if (coll.gameObject.tag == "Head"){
+            Debug.Log("Zober viac zdravia");
+            // coll.gameObject.GetComponentInParent<Health>().takeDamge(headDamage); 
+        }
+        else if (coll.gameObject.tag == "Body"){
+            Debug.Log("Zober zdravie");
+            // coll.gameObject.GetComponentInParent<Health>().takeDamge(bodyDamage);
+        }
+
+        if (coll.gameObject.tag != "Soldier"){
+            Destroy(gameObject);
+        }
     }
 }
