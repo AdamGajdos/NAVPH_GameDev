@@ -80,18 +80,20 @@ public class PlayerController : MonoBehaviour
 
     private bool IsOnGround()
     {
-        // mozny kontakt s collidermi inych hernych objektov
-        RaycastHit2D[] contacts = Physics2D.BoxCastAll(playerController.bounds.center, playerController.bounds.size, 0f, Vector2.down, 0.01f);
+        // List all colliders that is interacting with player collider
+        // second argument is size of box casted by us. We want it to be the same size as the player
+        // last argument is the distance between casted box and other collider. If the distance between them is smaller then hit is registered 
+        RaycastHit2D[] contacts = Physics2D.BoxCastAll(playerController.bounds.center, playerController.bounds.size, 0f, Vector2.down, 0.015f);
         
         int tmpCollisionCount = contacts.Length;
         for (int i = 0; i < tmpCollisionCount; i++)
         {
             RaycastHit2D tmpHit = contacts[i];
             
-            // koliziu sameho so sebou vynechaj
+            // dont collide with yourself
             if (!tmpHit.collider.tag.Equals("Player"))
             {
-                // ak si detegoval koliziu so zemou
+                // if you are colliding with ground object
                 if (tmpHit.collider.tag.Equals("Ground"))
                 {
                     return true;
@@ -99,7 +101,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        // nedoslo ku kontaku so zemou
+        // you are not touching ground
         return false;
     }
 
