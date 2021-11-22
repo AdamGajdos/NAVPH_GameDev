@@ -46,6 +46,12 @@ public class Health : MonoBehaviour
         
     }
 
+    // if Player stepped on mine take all of his/her life
+    public void HandleMine()
+    {
+        Debug.Log("Might have step on mine");
+        HandleHit(actualHealth);
+    }
     private void TakeDamage(float damage){
         actualHealth -= damage;
     }

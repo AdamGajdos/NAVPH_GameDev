@@ -6,14 +6,48 @@ public class BarrelController : MonoBehaviour
 {
     [SerializeField]
     private GameObject projectile;
-    private float deletionTime = 5f; 
+    private float deletionTime;
+    public float shotForce;
+
+    public float nextTimeToFire;
+    public float fireRate;
+
+    private void Awake()
+    {
+        fireRate = 1f;
+        nextTimeToFire = 0f;
+        shotForce = 350f;
+        deletionTime = 5f;
+    }
 
     public void Shoot()
     {
-        GameObject tmp = Instantiate(projectile, this.transform.position, Quaternion.identity);
+        if (Time.time >= nextTimeToFire)
+        {
+            GameObject tmp = Instantiate(projectile, transform.position, Quaternion.identity);
 
-        tmp.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+            tmp.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
 
-        Destroy(tmp, deletionTime);
+            Vector2 shotDirection = GetDirection();
+
+            tmp.GetComponent<CircleCollider2D>().attachedRigidbody.AddForce(shotDirection * shotForce);
+
+            nextTimeToFire = Time.time + 1 / fireRate;
+
+            // Destroy bullet in case it won't hit anything
+            Destroy(tmp, deletionTime);
+        }
+    }
+
+    public Vector2 GetDirection()
+    {
+
+        string facing = transform.parent.rotation.eulerAngles.y == 180f ? "left" : "right";
+
+        Debug.Log(transform.parent.tag + " is Facing " + facing);
+
+        bool facingLeft = transform.parent.rotation.eulerAngles.y == 180f;
+
+        return facingLeft ? Vector2.left : Vector2.right;
     }
 }
