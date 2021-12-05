@@ -13,6 +13,10 @@ GameObject:
   - component: {fileID: 7134531189806522385}
   - component: {fileID: 7134531189806522390}
   - component: {fileID: 7134531189806522384}
+  - component: {fileID: 3254034754704588178}
+  - component: {fileID: 97928938915960047}
+  - component: {fileID: -5530770480504464297}
+  - component: {fileID: -7044573685383490384}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -149,7 +153,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 300
   speed: 0
-  barrel: {fileID: 7134531191560431396}
+  energy: {fileID: 0}
+  sprintEnergy: 0
+--- !u!114 &3254034754704588178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134531189806522389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc0e520ac9965f40a251422bdd97a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
+  moneyText: {fileID: 0}
+--- !u!114 &97928938915960047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134531189806522389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91684b3dbda3c6f48b6b7bb0d3de01b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  healthSlider: {fileID: 0}
+--- !u!114 &-5530770480504464297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134531189806522389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f9dabe330c10646ad8b8b8254e83e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEnergy: 0
+  actualEnergy: 0
+  energySlider: {fileID: 0}
+--- !u!114 &-7044573685383490384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134531189806522389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f104786c16330b342a9546319b6ff3e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7134531189871449817
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,3 +380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 302969243823513778, guid: f21115a3ec6a2284fb56338222fee603, type: 3}
+  shotForce: 0
+  nextTimeToFire: 0
+  fireRate: 0

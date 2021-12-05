@@ -17,6 +17,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D playerController;
     private GameObject barrel;
+
+    public Energy energy;
+
+    public float sprintEnergy;
+
+    public Ammo ammo;
     
 
     // Start is called before the first frame update
@@ -53,12 +59,16 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
-            barrel.GetComponent<BarrelController>().Shoot();
+            if (ammo.value > 0 && barrel.GetComponent<BarrelController>().Shoot())
+                ammo.Use();
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            speed = speedSprint;
+            if (energy.HasEnergy())
+                speed = speedSprint;
+            else
+                speed = speedBasic;
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -71,6 +81,19 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer(movement);
+
+        if (IsSprinting()){
+            Debug.Log("Sprintuje");
+            energy.Decrease(sprintEnergy);
+
+            if (!energy.HasEnergy())
+                speed = speedBasic;
+        }
+    }
+
+     private bool IsSprinting()
+    {
+        return speed == speedSprint;
     }
 
     private void MovePlayer(Vector2 movement)

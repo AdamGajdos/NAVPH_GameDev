@@ -27,25 +27,27 @@ public class BulletController : MonoBehaviour
     //     Destroy(this);
     // }
 
-    private void Awake()
-    {
-        headDamage = 100f;
-        bodyDamage = 50f;
-    }
-
     private void OnTriggerEnter2D(Collider2D coll){
 
-        if (coll.gameObject.tag == "Head"){
-            Debug.Log("Zober viac zdravia");
-            coll.gameObject.GetComponentInParent<Health>().HandleHit(headDamage); 
+        if (coll.gameObject.tag == "Bullet" || coll.gameObject.tag == "Collectible"){
+            Debug.Log("Nic nerob");
         }
-        else if (coll.gameObject.tag == "Body"){
-            Debug.Log("Zober zdravie");
-            coll.gameObject.GetComponentInParent<Health>().HandleHit(bodyDamage);
+        else{
+
+            if (coll.gameObject.tag == "Head"){
+                Debug.Log("Zober viac zdravia");
+                coll.gameObject.GetComponentInParent<Health>().HandleHit(headDamage); 
+            }
+            else if (coll.gameObject.tag == "Body"){
+                Debug.Log("Zober zdravie");
+                coll.gameObject.GetComponentInParent<Health>().HandleHit(bodyDamage);
+            }
+
+            if (coll.gameObject.tag != "Soldier" && coll.gameObject.tag != "Player"){
+                Destroy(gameObject);
+            }
         }
 
-        if (coll.gameObject.tag != "Soldier"){
-            Destroy(gameObject);
-        }
+        
     }
 }

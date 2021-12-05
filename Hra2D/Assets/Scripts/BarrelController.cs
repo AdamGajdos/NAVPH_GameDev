@@ -20,7 +20,7 @@ public class BarrelController : MonoBehaviour
         deletionTime = 5f;
     }
 
-    public void Shoot()
+    public bool Shoot()
     {
         if (Time.time >= nextTimeToFire)
         {
@@ -36,6 +36,11 @@ public class BarrelController : MonoBehaviour
 
             // Destroy bullet in case it won't hit anything
             Destroy(tmp, deletionTime);
+
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
@@ -44,7 +49,7 @@ public class BarrelController : MonoBehaviour
 
         string facing = transform.parent.rotation.eulerAngles.y == 180f ? "left" : "right";
 
-        Debug.Log(transform.parent.tag + " is Facing " + facing);
+        // Debug.Log(transform.parent.tag + " is Facing " + facing);
 
         bool facingLeft = transform.parent.rotation.eulerAngles.y == 180f;
 

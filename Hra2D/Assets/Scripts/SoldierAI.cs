@@ -35,18 +35,18 @@ public class SoldierAI : MonoBehaviour
         {
             if (detectedObject.gameObject.tag.Equals("Player"))
             {
-                Debug.Log("Goin' fire");
+                // Debug.Log("Goin' fire");
 
                 return true;
             }
         }
-        Debug.Log("See nothing suspicious");
+        // Debug.Log("See nothing suspicious");
         return false;
     }
 
     void Shoot()
     {
-        Debug.Log("Firing");
+        // Debug.Log("Firing");
         barrel.GetComponent<BarrelController>().Shoot();
     }
 }

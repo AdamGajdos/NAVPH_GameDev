@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,8 @@ public class Health : MonoBehaviour
         
         actualHealth = maxHealth;
 
-        healthSlider.value = actualHealth/maxHealth;
+        UpdateSlider();
+
         Debug.Log(actualHealth);
     }
     // Start is called before the first frame update
@@ -42,7 +44,7 @@ public class Health : MonoBehaviour
             }
         }
         
-        healthSlider.value = actualHealth/maxHealth;
+        UpdateSlider();
         
     }
 
@@ -55,4 +57,19 @@ public class Health : MonoBehaviour
     private void TakeDamage(float damage){
         actualHealth -= damage;
     }
+
+    public void RenewHealth()
+    {
+        actualHealth = maxHealth;
+
+        UpdateSlider();
+    }
+
+    private void UpdateSlider()
+    {
+        if (healthSlider != null){
+            healthSlider.value = actualHealth/maxHealth;
+        }
+    }
+
 }
