@@ -126,7 +126,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00072550774, y: 0.00047802925}
+  m_Offset: {x: 0.035826683, y: 0.00047802925}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -137,7 +137,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2233205, y: 2.2713742}
+  m_Size: {x: 1.1390781, y: 2.2713742}
   m_EdgeRadius: 0
 --- !u!114 &7134531189806522384
 MonoBehaviour:
@@ -153,8 +153,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 300
   speed: 0
-  energy: {fileID: 0}
-  sprintEnergy: 0
+  energy: {fileID: -5530770480504464297}
+  sprintEnergy: 1
+  ammo: {fileID: -7044573685383490384}
 --- !u!114 &3254034754704588178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc0e520ac9965f40a251422bdd97a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  value: 0
   moneyText: {fileID: 0}
 --- !u!114 &97928938915960047
 MonoBehaviour:
@@ -195,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f9dabe330c10646ad8b8b8254e83e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnergy: 0
+  maxEnergy: 200
   actualEnergy: 0
   energySlider: {fileID: 0}
 --- !u!114 &-7044573685383490384
@@ -210,6 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f104786c16330b342a9546319b6ff3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  value: 10
+  ammoText: {fileID: 0}
 --- !u!1 &7134531189871449817
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +225,7 @@ GameObject:
   - component: {fileID: 7134531189871449819}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,7 +304,7 @@ GameObject:
   - component: {fileID: 7134531190951551965}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

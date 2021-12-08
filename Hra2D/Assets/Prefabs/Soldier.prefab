@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 988887576981028515}
   - component: {fileID: 988887576981028516}
   - component: {fileID: -1731909174500941484}
+  - component: {fileID: 1843723977}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Soldier
@@ -224,6 +225,20 @@ MonoBehaviour:
   spotingArea: {x: 0, y: 0}
   nextTimeToFire: 0
   fireRate: 0
+--- !u!114 &1843723977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988887576981028518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91684b3dbda3c6f48b6b7bb0d3de01b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  healthSlider: {fileID: 0}
 --- !u!1 &988887577243062422
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 988887577668218904}
+  - component: {fileID: 372910011}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -301,3 +317,19 @@ Transform:
   m_Father: {fileID: 988887576981028513}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372910011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988887577668218905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f43f36d139252b4cbef8b8646af54cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 302969243823513778, guid: f21115a3ec6a2284fb56338222fee603, type: 3}
+  shotForce: 0
+  nextTimeToFire: 0
+  fireRate: 0
