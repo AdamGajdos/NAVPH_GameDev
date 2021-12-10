@@ -17,8 +17,9 @@ GameObject:
   - component: {fileID: 97928938915960047}
   - component: {fileID: -5530770480504464297}
   - component: {fileID: -7044573685383490384}
+  - component: {fileID: 1412840132}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Yelena
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,6 +157,7 @@ MonoBehaviour:
   energy: {fileID: -5530770480504464297}
   sprintEnergy: 1
   ammo: {fileID: -7044573685383490384}
+  animator: {fileID: 1412840132}
 --- !u!114 &3254034754704588178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +215,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 10
   ammoText: {fileID: 0}
+--- !u!95 &1412840132
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134531189806522389}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7109132f757fcd64f9925bf85897d107, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7134531189871449817
 GameObject:
   m_ObjectHideFlags: 0

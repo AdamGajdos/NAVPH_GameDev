@@ -23,7 +23,15 @@ public class PlayerController : MonoBehaviour
     public float sprintEnergy;
 
     public Ammo ammo;
+
+    public Animator animator; 
     
+    private GameObject[] listGround;
+
+
+    void Awake(){
+        listGround = GameObject.FindGameObjectsWithTag("Ground");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +51,13 @@ public class PlayerController : MonoBehaviour
         
         movement = new Vector2(horizontalMovement * speed, rb.velocity.y);
 
+        
+        if (IsOnGround())
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMovement * speed));
+        else
+            animator.SetFloat("Speed", 0);
+            
+
         if (horizontalMovement > 0 && !facingRight)
         {
             Turn();
@@ -52,10 +67,21 @@ public class PlayerController : MonoBehaviour
             Turn();
         }
 
+        // if (isJumping) {
+        //     Debug.Log("Jumping???");
+        //     animator.SetFloat("Speed", 0);
+        //     if (IsOnGround())
+        //         isJumping = false;
+        // }
+        // else {
+        //     animator.SetFloat("Speed", Mathf.Abs(horizontalMovement * speed));
+        // }
+
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround())
         {
             rb.AddForce(Vector2.up * jumpForce);
         }
+            
 
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
@@ -103,29 +129,35 @@ public class PlayerController : MonoBehaviour
 
     private bool IsOnGround()
     {
-        // List all colliders that is interacting with player collider
-        // second argument is size of box casted by us. We want it to be the same size as the player
-        // last argument is the distance between casted box and other collider. If the distance between them is smaller then hit is registered 
-        RaycastHit2D[] contacts = Physics2D.BoxCastAll(playerController.bounds.center, playerController.bounds.size, 0f, Vector2.down, 0.015f);
-        
-        int tmpCollisionCount = contacts.Length;
-        for (int i = 0; i < tmpCollisionCount; i++)
-        {
-            RaycastHit2D tmpHit = contacts[i];
-            
-            // dont collide with yourself
-            if (!tmpHit.collider.tag.Equals("Player"))
-            {
-                // if you are colliding with ground object
-                if (tmpHit.collider.tag.Equals("Ground"))
-                {
-                    return true;
-                }
-            }
+        foreach (GameObject obj in listGround){
+            if (obj.GetComponent<Collider2D>() != null && Physics2D.Distance(playerController, obj.GetComponent<Collider2D>()).distance < 0.001)
+                return true;
         }
-        
-        // you are not touching ground
         return false;
+
+        // // List all colliders that is interacting with player collider
+        // // second argument is size of box casted by us. We want it to be the same size as the player
+        // // last argument is the distance between casted box and other collider. If the distance between them is smaller then hit is registered 
+        // RaycastHit2D[] contacts = Physics2D.BoxCastAll(playerController.bounds.center, playerController.bounds.size, 0f, Vector2.down, 0.015f);
+        
+        // int tmpCollisionCount = contacts.Length;
+        // for (int i = 0; i < tmpCollisionCount; i++)
+        // {
+        //     RaycastHit2D tmpHit = contacts[i];
+            
+        //     // dont collide with yourself
+        //     if (!tmpHit.collider.tag.Equals("Player"))
+        //     {
+        //         // if you are colliding with ground object
+        //         if (tmpHit.collider.tag.Equals("Ground"))
+        //         {
+        //             return true;
+        //         }
+        //     }
+        // }
+        
+        // // you are not touching ground
+        // return false;
     }
 
     private void Turn()
