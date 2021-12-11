@@ -354,9 +354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Igor
-
-'
+  m_text: Igor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -437,6 +435,7 @@ GameObject:
   - component: {fileID: 3012696963265110697}
   - component: {fileID: 5268302344024152169}
   - component: {fileID: 471815453140225870}
+  - component: {fileID: 2049005490281369493}
   m_Layer: 5
   m_Name: Player1
   m_TagString: Untagged
@@ -546,9 +545,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5286509067052807011}
-        m_TargetAssemblyTypeName: PlayerSelectionMenuManager, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 2049005490281369493}
+        m_TargetAssemblyTypeName: SelectionButtonController, Assembly-CSharp
+        m_MethodName: ProceedChoice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -558,6 +557,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2049005490281369493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4926594778930026820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ead6e74c446f764ea7f10f36e89bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 5286509067052807011}
 --- !u!1 &5002356656008932778
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,6 +923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5002356657178834939}
   - component: {fileID: 5286509067052807011}
+  - component: {fileID: 6263318909131900018}
   m_Layer: 5
   m_Name: ButtonHolder
   m_TagString: Untagged
@@ -953,7 +966,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d3389a48179494e89150f6187db692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousMenu: {fileID: 0}
+  playerName: {fileID: 0}
+  gameStarter: {fileID: 6263318909131900018}
+--- !u!114 &6263318909131900018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5002356657178834940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07055501d8f5e3042b9ed02be7b46290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableCharacters: {fileID: 11400000, guid: 870c8c5f326b6904db6ef9b24dfb7e90, type: 2}
+  spawnpoints: {fileID: 11400000, guid: a2252b7da9e70954abf3d626df7497e3, type: 2}
 --- !u!1 &5002356657261861968
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +994,7 @@ GameObject:
   - component: {fileID: 5002356657261861964}
   - component: {fileID: 5002356657261861965}
   - component: {fileID: 5002356657261861966}
+  - component: {fileID: 3501005866958781603}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -1075,9 +1104,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5286509067052807011}
-        m_TargetAssemblyTypeName: PlayerSelectionMenuManager, Assembly-CSharp
-        m_MethodName: Back
+      - m_Target: {fileID: 3501005866958781603}
+        m_TargetAssemblyTypeName: BackButtonController, Assembly-CSharp
+        m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1087,6 +1116,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3501005866958781603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5002356657261861968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94534fc2c5f655843b9845ce830880ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousPanel: {fileID: 5002356657529401722, guid: 2369ea07a6dd2074d94664dd09692297, type: 3}
+  actualPanel: {fileID: 5002356657529401722}
 --- !u!1 &5002356657529401722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1379,7 @@ GameObject:
   - component: {fileID: 5932160607671888906}
   - component: {fileID: 8447239237110962845}
   m_Layer: 5
-  m_Name: NameField
+  m_Name: NameInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1510,6 +1553,7 @@ GameObject:
   - component: {fileID: 6076764226291147611}
   - component: {fileID: 7942616104159060885}
   - component: {fileID: 1400254325813374701}
+  - component: {fileID: 2336475188379429111}
   m_Layer: 5
   m_Name: Player2
   m_TagString: Untagged
@@ -1619,9 +1663,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5286509067052807011}
-        m_TargetAssemblyTypeName: PlayerSelectionMenuManager, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 2336475188379429111}
+        m_TargetAssemblyTypeName: SelectionButtonController, Assembly-CSharp
+        m_MethodName: ProceedChoice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1631,6 +1675,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2336475188379429111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7077918191154583910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ead6e74c446f764ea7f10f36e89bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 5286509067052807011}
 --- !u!1 &7242806119460586540
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    //private string mainGameScene = "SampleScene";
     public GameObject optionMenu;
     public GameObject gameSelectionMenu;
 
     public void PlayGame()
     {
-        //SceneManager.LoadScene(mainGameScene);
         Debug.Log("Gonna list saved games and new game possibility");
         if (gameSelectionMenu != null)
         {
@@ -22,7 +20,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void SeeOptions()
     {
-        Debug.Log("Gonna display game Options");
+        Debug.Log("Gonna display controls of game");
         if (optionMenu != null)
         {
             optionMenu.SetActive(true);

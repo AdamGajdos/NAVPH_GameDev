@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
     private float speedSprint = 8f;
     public float jumpForce = 300f;
 
+    public string characterName;
+    public string playerName;
+    public int coins;
+    public string achievedLevel;
+
     public float speed;
     private bool facingRight;
 
@@ -164,5 +169,14 @@ public class PlayerController : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(Vector2.up, 180f);
+    }
+
+    public void InitializePlayer(PlayerData data)
+    {
+        characterName = data.characterName;
+        playerName = data.playerName;
+        ammo.value = data.ammo;
+        coins = data.coins;
+        achievedLevel = data.achievedLevel;
     }
 }
