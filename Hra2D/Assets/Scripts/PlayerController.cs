@@ -134,35 +134,37 @@ public class PlayerController : MonoBehaviour
 
     private bool IsOnGround()
     {
-        foreach (GameObject obj in listGround){
-            if (obj.GetComponent<Collider2D>() != null && Physics2D.Distance(playerController, obj.GetComponent<Collider2D>()).distance < 0.001)
-                return true;
-        }
-        return false;
+        /*
+            foreach (GameObject obj in listGround){
+                if (obj.GetComponent<Collider2D>() != null && Physics2D.Distance(playerController, obj.GetComponent<Collider2D>()).distance < 0.001)
+                    return true;
+            }
+            return false;
+        */
 
-        // // List all colliders that is interacting with player collider
-        // // second argument is size of box casted by us. We want it to be the same size as the player
-        // // last argument is the distance between casted box and other collider. If the distance between them is smaller then hit is registered 
-        // RaycastHit2D[] contacts = Physics2D.BoxCastAll(playerController.bounds.center, playerController.bounds.size, 0f, Vector2.down, 0.015f);
-        
-        // int tmpCollisionCount = contacts.Length;
-        // for (int i = 0; i < tmpCollisionCount; i++)
-        // {
-        //     RaycastHit2D tmpHit = contacts[i];
-            
-        //     // dont collide with yourself
-        //     if (!tmpHit.collider.tag.Equals("Player"))
-        //     {
-        //         // if you are colliding with ground object
-        //         if (tmpHit.collider.tag.Equals("Ground"))
-        //         {
-        //             return true;
-        //         }
-        //     }
-        // }
-        
-        // // you are not touching ground
-        // return false;
+        // List all colliders that is interacting with player collider
+        // second argument is size of box casted by us. We want it to be the same size as the player
+        // last argument is the distance between casted box and other collider. If the distance between them is smaller then hit is registered 
+        RaycastHit2D[] contacts = Physics2D.BoxCastAll(playerController.bounds.center, playerController.bounds.size, 0f, Vector2.down, 0.015f);
+
+        int tmpCollisionCount = contacts.Length;
+        for (int i = 0; i < tmpCollisionCount; i++)
+        {
+            RaycastHit2D tmpHit = contacts[i];
+
+            // dont collide with yourself
+            if (!tmpHit.collider.tag.Equals("Player"))
+            {
+                // if you are colliding with ground object
+                if (tmpHit.collider.tag.Equals("Ground"))
+                {
+                    return true;
+                }
+            }
+        }
+
+        // you are not touching ground
+        return false;
     }
 
     private void Turn()
