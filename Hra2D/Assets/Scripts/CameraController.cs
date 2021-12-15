@@ -10,7 +10,8 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
-        cameraOffset = new Vector3(0f, 1.75f, 0f);
+        //cameraOffset = new Vector3(0f, 1.75f, 0f);
+        cameraOffset = new Vector3(0f, 1f, 0f);
     }
 
     // Start is called before the first frame update
@@ -25,7 +26,7 @@ public class CameraController : MonoBehaviour
     {
         if (player != null)
         {
-            transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
         }
     }
 }

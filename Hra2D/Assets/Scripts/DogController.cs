@@ -71,41 +71,44 @@ public class DogController : MonoBehaviour
     } 
 
     private void SetMovement()
-    {   
-        // float dist = Vector3.Distance(transform.position, player.transform.position);
+    {
+        if (player != null) // Fix for: when player dies the console is printing null error
+        {
+            // float dist = Vector3.Distance(transform.position, player.transform.position);
 
-        float dist = Physics2D.Distance(playerCol, dogCollider).distance;
+            float dist = Physics2D.Distance(playerCol, dogCollider).distance;
 
-        // float yDif = player.transform.position.y - transform.position.y;
-        float xDif = player.transform.position.x - transform.position.x;
+            // float yDif = player.transform.position.y - transform.position.y;
+            float xDif = player.transform.position.x - transform.position.x;
 
 
-        // float yDist = Mathf.Abs(yDif);
-        float xDist = Mathf.Abs(xDif);
+            // float yDist = Mathf.Abs(yDif);
+            float xDist = Mathf.Abs(xDif);
 
-        SetSpeed(dist, xDist);
+            SetSpeed(dist, xDist);
 
-        float horizontalMovement = 0;
+            float horizontalMovement = 0;
 
-        if (xDif != 0)
-            horizontalMovement = (xDif) / Mathf.Abs(xDif);
+            if (xDif != 0)
+                horizontalMovement = (xDif) / Mathf.Abs(xDif);
        
         
-        movement = new Vector2(horizontalMovement * realSpeed, rb.velocity.y);
+            movement = new Vector2(horizontalMovement * realSpeed, rb.velocity.y);
 
-        if ((horizontalMovement > 0 && !facingRight) || (horizontalMovement < 0 && facingRight))
-            Turn();
+            if ((horizontalMovement > 0 && !facingRight) || (horizontalMovement < 0 && facingRight))
+                Turn();
         
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMovement * realSpeed));
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMovement * realSpeed));
 
 
-        if (dist < attackDist){ 
-            player.GetComponentInParent<Health>().HandleHit(damage); 
-            animator.SetBool("Attack", true);
+            if (dist < attackDist){ 
+                player.GetComponentInParent<Health>().HandleHit(damage); 
+                animator.SetBool("Attack", true);
+            }
+            else{
+                animator.SetBool("Attack", false);
+            }    
         }
-        else{
-            animator.SetBool("Attack", false);
-        }    
 
     } 
 

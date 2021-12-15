@@ -1056,10 +1056,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8927135354699207188, guid: d1afbfa8d28838541b9529fef4862af9, type: 3}
-      propertyPath: actualPanel
-      value: 
-      objectReference: {fileID: 1464996123}
-    - target: {fileID: 8927135354699207188, guid: d1afbfa8d28838541b9529fef4862af9, type: 3}
       propertyPath: previousPanel
       value: 
       objectReference: {fileID: 1051638610}
