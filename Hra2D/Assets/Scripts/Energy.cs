@@ -11,9 +11,7 @@ public class Energy : MonoBehaviour
     public float maxEnergy;
     public float actualEnergy;
 
-    public Slider energySlider;
-
-    void Awake(){
+    void Start(){
         
         actualEnergy = 0;
 
@@ -21,16 +19,17 @@ public class Energy : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void UpdateValue(float value)
+    {
+        actualEnergy = value;
+
+        UpdateSlider();
     }
 
     public void Renew()
@@ -53,9 +52,13 @@ public class Energy : MonoBehaviour
         return actualEnergy > 0;
     }
 
+    public delegate void OnEnergyChange(float newEnergy, float maxEnergy);
+
+    public event OnEnergyChange energyChanged;
+
     private void UpdateSlider()
     {
-        if (energySlider != null)
-            energySlider.value = actualEnergy/maxEnergy;
+        energyChanged?.Invoke(actualEnergy, maxEnergy);
+    
     }
 }

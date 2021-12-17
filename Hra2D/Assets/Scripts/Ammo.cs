@@ -9,17 +9,9 @@ public class Ammo : MonoBehaviour
     // Start is called before the first frame update
     public int value;
 
-    public Text ammoText;
-    void Awake(){
+    void Start(){
         
         UpdateText();
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -40,10 +32,19 @@ public class Ammo : MonoBehaviour
         UpdateText();
     }
 
+     public void UpdateValue(int value)
+    {
+        this.value = value;
+
+        UpdateText();
+    }
+
+    public delegate void OnAmmoChange(int value);
+
+    public event OnAmmoChange ammoChanged;
+
     private void UpdateText()
     {
-        if (ammoText != null){
-            ammoText.text = "Shells " + value;
-        }
+        ammoChanged?.Invoke(value);
     }
 }

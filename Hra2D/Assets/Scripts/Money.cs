@@ -10,8 +10,7 @@ public class Money : MonoBehaviour
 
     public int value;
 
-    public Text moneyText;
-    void Awake(){
+    void Start(){
         
         value = 0;
 
@@ -19,17 +18,6 @@ public class Money : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void AddMoney(int value)
     {
@@ -38,10 +26,27 @@ public class Money : MonoBehaviour
         UpdateMoneyText();
     }
 
+    public void SpendMoney(int value)
+    {
+        this.value -= value;
+        UpdateMoneyText();
+
+    }
+
+
+    public void UpdateValue(int value)
+    {
+        this.value = value;
+
+        UpdateMoneyText();
+    }
+
+    public delegate void OnMoneyChange(int value);
+
+    public event OnMoneyChange moneyChanged;
+
     private void UpdateMoneyText()
     {
-        if (moneyText != null){
-            moneyText.text = "Rubles " + value;
-        }
+        moneyChanged?.Invoke(value);
     }
 }

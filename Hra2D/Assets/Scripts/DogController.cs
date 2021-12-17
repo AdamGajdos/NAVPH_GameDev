@@ -39,7 +39,7 @@ public class DogController : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerCol = player.GetComponent<Collider2D>();
+        playerCol = player?.GetComponent<Collider2D>();
 
         
     }

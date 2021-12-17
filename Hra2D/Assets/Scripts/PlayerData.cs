@@ -7,24 +7,33 @@ public class PlayerData
     public string playerName { get; }
     public string characterName { get; }
     public int ammo { get; }
-    public int coins { get; }
+    public int money { get; }
+
+    public float energy { get; }
+
+    public float health { get; }
+
     public string achievedLevel { get; }
 
     public PlayerData(PlayerController pc)
     {
         playerName = pc.playerName;
         characterName = pc.characterName;
-        ammo = pc.ammo.value;
-        coins = pc.coins;
+        ammo = pc.GetComponent<Ammo>().value;
+        money = pc.GetComponent<Money>().value;
+        energy = pc.GetComponent<Energy>().actualEnergy;
+        health = pc.GetComponent<Health>().actualHealth;
         achievedLevel = pc.achievedLevel;
     }
 
-    public PlayerData(string player_name, string character_name, int ammunition, int money, string achieved_level)
+    public PlayerData(string player_name, string character_name, int ammunition, int money, float actEnergy, float actHealth, string achieved_level)
     {
         playerName = player_name;
         characterName = character_name;
         ammo = ammunition;
-        coins = money;
+        this.money = money;
+        energy = actEnergy;
+        health = actHealth;
         achievedLevel = achieved_level;
     }
 
@@ -33,7 +42,7 @@ public class PlayerData
         Debug.Log("Player name: " + playerName);
         Debug.Log("Character name: " + characterName);
         Debug.Log("Ammo: " + ammo);
-        Debug.Log("Coins: " + coins);
+        // Debug.Log("Coins: " + coins);
         Debug.Log("Achieved level: " + achievedLevel);
         Debug.Log("-----------------------------------------");
     }

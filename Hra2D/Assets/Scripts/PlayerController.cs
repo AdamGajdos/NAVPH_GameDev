@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speedBasic = 5f;
-    private float speedSprint = 8f;
+    public float speedBasic;
+    public float speedSprint;
     public float jumpForce = 300f;
 
     public string characterName;
     public string playerName;
-    public int coins;
+    // public int coins;
     public string achievedLevel;
 
     public float speed;
@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
     public Animator animator; 
     
     private GameObject[] listGround;
-
 
     void Awake(){
         listGround = GameObject.FindGameObjectsWithTag("Ground");
@@ -177,8 +176,10 @@ public class PlayerController : MonoBehaviour
     {
         characterName = data.characterName;
         playerName = data.playerName;
-        ammo.value = data.ammo;
-        coins = data.coins;
+        gameObject.GetComponent<Ammo>().UpdateValue(data.ammo);
+        gameObject.GetComponent<Money>().UpdateValue(data.money);
+        gameObject.GetComponent<Health>().UpdateValue(data.health);
+        gameObject.GetComponent<Energy>().UpdateValue(data.energy);
         achievedLevel = data.achievedLevel;
     }
 }

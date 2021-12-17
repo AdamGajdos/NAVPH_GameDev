@@ -35,8 +35,6 @@ public class GameStarter : MonoBehaviour
             {
                 GameObject player = GetChosenPlayer(pd.characterName);
 
-                player.GetComponent<PlayerController>().InitializePlayer(pd);
-
                 var newLevel = SceneManager.LoadSceneAsync(pd.achievedLevel, LoadSceneMode.Additive);
 
                 while (!newLevel.isDone)
@@ -49,6 +47,9 @@ public class GameStarter : MonoBehaviour
                 player.transform.position = spawnpoints.spawnpoints[GetLevelNumber(pd.achievedLevel)];
 
                 SceneManager.UnloadSceneAsync(currentScene);
+                
+                player.GetComponent<PlayerController>().InitializePlayer(pd);
+                
             }
 
             else

@@ -7,31 +7,37 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     public float maxHealth;
-    private float actualHealth;
+    public float actualHealth;
 
-    public Slider healthSlider;
 
-    void Awake(){
+    public delegate void OnHealthChange(float newHealth, float maxHealth);
+
+    public event OnHealthChange healthChanged;
+
+
+    // void Awake(){
         
+    //     actualHealth = maxHealth;
+
+    //     healthChanged?.Invoke(actualHealth, maxHealth);
+
+    //     // UpdateSlider();
+
+    //     // Debug.Log(actualHealth);
+    // }
+
+    void Start(){
         actualHealth = maxHealth;
 
-        UpdateSlider();
-
         Debug.Log(actualHealth);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        healthChanged?.Invoke(maxHealth, maxHealth);
     }
 
     public void HandleHit(float damage){
+        Debug.Log(actualHealth);
+
+
         Debug.Log("Handlujem hit");
         TakeDamage(damage);
         if (actualHealth <= 0){
@@ -43,8 +49,11 @@ public class Health : MonoBehaviour
                 Time.timeScale = 0;
             }
         }
+
+        healthChanged?.Invoke(actualHealth, maxHealth);
+
         
-        UpdateSlider();
+        // UpdateSlider();
         
     }
 
@@ -62,14 +71,23 @@ public class Health : MonoBehaviour
     {
         actualHealth = maxHealth;
 
-        UpdateSlider();
+        // UpdateSlider();
+        healthChanged?.Invoke(actualHealth, maxHealth);
+
     }
 
-    private void UpdateSlider()
+    public void UpdateValue(float value)
     {
-        if (healthSlider != null){
-            healthSlider.value = actualHealth/maxHealth;
-        }
+        actualHealth = value;
+
+        healthChanged?.Invoke(actualHealth, maxHealth);
     }
+
+    // private void UpdateSlider()
+    // {
+    //     if (healthSlider != null){
+    //         healthSlider.value = actualHealth/maxHealth;
+    //     }
+    // }
 
 }

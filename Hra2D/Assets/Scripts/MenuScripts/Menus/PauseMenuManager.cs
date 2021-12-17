@@ -17,7 +17,7 @@ public class PauseMenuManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pauseMenu?.GetComponent<PauseMenuScript>()?.SetPlayerInfo(messagePause);
+        pauseMenu?.GetComponentInChildren<PauseMenuScript>()?.SetPlayerInfo(messagePause);
     }
 
     private void Update()

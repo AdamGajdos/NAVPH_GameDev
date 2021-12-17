@@ -26,14 +26,26 @@ public class PlayerSelectionMenuManager : ChoiceMenu
         int startingAmmo = 30;
         int startingMoney = 0;
         string achievedLevel = "Level_0";       // first level
+        float startingEnergy = 0;
+        float startingHealth = 200; 
+        
+        foreach (GameObject obj in gameStarter.playableCharacters.characters){
+            if (obj.name == characterName){
+                startingHealth = obj.GetComponent<Health>().maxHealth;
+                break;
+            }
+        }
 
         PlayerData pd = new PlayerData(
             chosenPlayerName,
             characterName,
             startingAmmo,
             startingMoney,
+            startingEnergy,
+            startingHealth,
             achievedLevel
         );
+
         pd.GetPlayerInfoDebug();        // display data that are about to be saved
 
         SavingSystem.SavePlayerProgress(pd);
