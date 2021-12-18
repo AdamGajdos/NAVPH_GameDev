@@ -5,6 +5,14 @@ using UnityEngine;
 public class OptionsMenuManager : MonoBehaviour
 {
     public GameObject menuPanel;
+
+    public void MuteToggle(bool muted){
+        if (muted)
+            AudioListener.volume = 0;
+        else
+            AudioListener.volume = 1;
+
+    }
     public void BackToMainMenu()
     {
         Debug.Log("Goin back to main menu!");
