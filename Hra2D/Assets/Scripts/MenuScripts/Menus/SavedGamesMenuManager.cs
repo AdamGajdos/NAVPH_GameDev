@@ -23,6 +23,7 @@ public class SavedGamesMenuManager : ChoiceMenu
         LoadSavedGames();
     }
 
+    // Load every saved game in players PC
     public void LoadSavedGames()
     {
         if (Directory.Exists(path))
@@ -46,6 +47,7 @@ public class SavedGamesMenuManager : ChoiceMenu
         }
     }
 
+    // add saved game to list of available saved  games in players PC
     private void AddItemToList(string pd)
     {
         GameObject tmp = Instantiate(listItem);
@@ -57,6 +59,7 @@ public class SavedGamesMenuManager : ChoiceMenu
         tmp.SetActive(true);
     }
 
+    // prepare selected saved game
     public void SelectGame(string chosenSave)
     {
         string selectedSave = chosenSave.Split('-')[0];     // get player name
@@ -72,6 +75,7 @@ public class SavedGamesMenuManager : ChoiceMenu
 
     }
 
+    // Handle click on button
     public override void HandleSelected(string choice)
     {
         SelectGame(choice);

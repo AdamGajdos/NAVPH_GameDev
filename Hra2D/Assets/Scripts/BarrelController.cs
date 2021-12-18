@@ -7,7 +7,7 @@ public class BarrelController : MonoBehaviour
     [SerializeField]
     private GameObject projectile;
     private float deletionTime;
-    public float shotForce;
+    public float shotForce;     // force with which the bullet will be shot from barrel
 
     public float nextTimeToFire;
     public float fireRate;
@@ -22,6 +22,8 @@ public class BarrelController : MonoBehaviour
 
     public bool Shoot()
     {
+        // This principle is inspired by video: https://www.youtube.com/watch?v=THnivyG0Mvo
+        // Implements rate of fire for player and soldier
         if (Time.time >= nextTimeToFire)
         {
             GameObject tmp = Instantiate(projectile, transform.position, Quaternion.identity);
@@ -44,6 +46,7 @@ public class BarrelController : MonoBehaviour
         }
     }
 
+    // Get direction where barrel is pointing
     public Vector2 GetDirection()
     {
 

@@ -7,19 +7,21 @@ public class PauseMenuScript : MonoBehaviour
 {
     public GameObject resumeButton;
 
+    // Resume paused game
     public void Resume()
     {
         Time.timeScale = 1f;
         GetParentObject().SetActive(false);
     }
 
-    // there wont be saving process
+    // There won't be saving process of player progression
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenuScene");
     }
 
+ 
     public void HandleMenuInvocation()
     {
         if (gameObject.activeInHierarchy)
@@ -32,6 +34,8 @@ public class PauseMenuScript : MonoBehaviour
         }
     }
 
+    // Find first TMP_Text and set its value to msg.(In this case this is GameObject PlayerInfo in PauseMenu which is
+    // holding information for player whether he/she has paused game or died in game)
     public void SetPlayerInfo(string msg)
     {
         TMP_Text playerInfo = gameObject.GetComponentInChildren<TMP_Text>();
@@ -40,6 +44,7 @@ public class PauseMenuScript : MonoBehaviour
 
     }
 
+    // Make Resume button unavailable in case if the player have died
     public void MakeResumeUnable()
     {
         resumeButton.SetActive(false);

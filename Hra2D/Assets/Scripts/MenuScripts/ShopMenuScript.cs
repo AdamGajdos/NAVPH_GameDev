@@ -59,11 +59,15 @@ public class ShopMenuScript : MonoBehaviour
         StartCoroutine(PrepareGame());
     }
 
+    // This is inspired by:
+    //      https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html,
+    //      https://stackoverflow.com/questions/45798666/move-transfer-gameobject-to-another-scene, 
+    //      https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.MoveGameObjectToScene.html
     public IEnumerator PrepareGame()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
+        Scene currentScene = SceneManager.GetActiveScene();     // needed for unloading scene after the wanted one is loaded
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");     // our player
 
         PlayerData pd = new PlayerData(player.GetComponent<PlayerController>());
                 
@@ -74,13 +78,13 @@ public class ShopMenuScript : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.MoveGameObjectToScene(player, SceneManager.GetSceneByName(pd.achievedLevel));
+        SceneManager.MoveGameObjectToScene(player, SceneManager.GetSceneByName(pd.achievedLevel));  // moving our player to another scene(new level)
 
         player.transform.position = spawnPoints.spawnpoints[GetLevelNumber(pd.achievedLevel)];
 
         SceneManager.UnloadSceneAsync(currentScene);
 
-        player.GetComponent<PlayerController>().InitializePlayer(pd);
+        player.GetComponent<PlayerController>().InitializePlayer(pd);   // after the next scene is loaded and previous is unloading then initialize player data
 
     }
 
