@@ -6,24 +6,15 @@ public class CameraController : MonoBehaviour
 {
     
     public GameObject player;
-    public Vector3 cameraOffset;
 
-    private void Awake()
-    {
-        //cameraOffset = new Vector3(0f, 1.75f, 0f);
-        cameraOffset = new Vector3(0f, 1f, 0f);
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        transform.position += cameraOffset;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // if player is present on scene follow him/her
         if (player != null)
         {
             transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);

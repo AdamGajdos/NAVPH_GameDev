@@ -6,18 +6,10 @@ using UnityEngine.UI;
 
 public class Ammo : MonoBehaviour
 {
-    // Start is called before the first frame update
     public int value;
 
-    void Start(){
-        
+    void Start(){       
         UpdateText();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Use(){

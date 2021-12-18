@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
 
     public string characterName;
     public string playerName;
-    // public int coins;
     public string achievedLevel;
 
     public float speed;
@@ -31,12 +30,6 @@ public class PlayerController : MonoBehaviour
     public Ammo ammo;
 
     public Animator animator; 
-    
-    private GameObject[] listGround;
-
-    void Awake(){
-        listGround = GameObject.FindGameObjectsWithTag("Ground");
-    }
 
     void Start()
     {
@@ -70,16 +63,6 @@ public class PlayerController : MonoBehaviour
         {
             Turn();
         }
-
-        // if (isJumping) {
-        //     Debug.Log("Jumping???");
-        //     animator.SetFloat("Speed", 0);
-        //     if (IsOnGround())
-        //         isJumping = false;
-        // }
-        // else {
-        //     animator.SetFloat("Speed", Mathf.Abs(horizontalMovement * speed));
-        // }
 
         // Jumping
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround())
@@ -126,7 +109,6 @@ public class PlayerController : MonoBehaviour
         MovePlayer(movement);
 
         if (IsSprinting()){
-            Debug.Log("Sprintuje");
             energy.Decrease(sprintEnergy);
 
             if (!energy.HasEnergy())
@@ -146,15 +128,7 @@ public class PlayerController : MonoBehaviour
 
     // Check if player is touching ground. Using for jumping and animating purpose
     private bool IsOnGround()
-    {
-        /*
-            foreach (GameObject obj in listGround){
-                if (obj.GetComponent<Collider2D>() != null && Physics2D.Distance(playerController, obj.GetComponent<Collider2D>()).distance < 0.001)
-                    return true;
-            }
-            return false;
-        */
-
+    {        
         // List all colliders that is interacting with player collider
         // second argument is size of box casted by us. We want it to be the same size as the player
         // last argument is the distance between casted box and other collider. If the distance between them is smaller then hit is registered 

@@ -10,7 +10,7 @@ public class BackButtonController : MonoBehaviour
     public void GoBack()
     {
 
-        Debug.Log("Going back to " + previousPanel.name);
+        Debug.Log("Going to " + previousPanel.name);
 
         previousPanel.SetActive(true);
         actualPanel.SetActive(false);

@@ -4,26 +4,14 @@ using UnityEngine;
 
 public class FinishLevel : MonoBehaviour
 {
-
     public GameObject shopMenu;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+    
+    // When finnished point is entered set new level as achieved level(level to be played), save player's progress and show shop menu
     private void OnTriggerEnter2D(Collider2D coll){
         if (coll.gameObject.tag == "Player"){
             PlayerController player = coll.gameObject.GetComponent<PlayerController>();
 
-            int newLevel = int.Parse(player.achievedLevel.Split('_')[1]) + 1;
+            int newLevel = int.Parse(player.achievedLevel.Split('_')[1]) + 1;   // set the next level
 
             player.achievedLevel = "Level_" + newLevel;
 

@@ -12,7 +12,7 @@ public class SoldierAI : MonoBehaviour
 
     private void Awake()
     {
-        spotingArea = new Vector2(26f, 3f);     // <-10f ; 10f> Horizontally  <-1.5f;1.5f> Vertically 
+        spotingArea = new Vector2(26f, 3f);     // <-13f ; 13f> Horizontally  <-1.5f;1.5f> Vertically 
         nextTimeToFire = 0f;
         fireRate = 1f;
     }
@@ -35,18 +35,14 @@ public class SoldierAI : MonoBehaviour
         {
             if (detectedObject.gameObject.tag.Equals("Player"))
             {
-                // Debug.Log("Goin' fire");
-
                 return true;
             }
         }
-        // Debug.Log("See nothing suspicious");
         return false;
     }
 
     void Shoot()
     {
-        // Debug.Log("Firing");
         barrel.GetComponent<BarrelController>().Shoot();
     }
 }

@@ -37,16 +37,6 @@ public class PlayerData
         achievedLevel = achieved_level;
     }
 
-    public void GetPlayerInfoDebug()
-    {
-        Debug.Log("Player name: " + playerName);
-        Debug.Log("Character name: " + characterName);
-        Debug.Log("Ammo: " + ammo);
-        // Debug.Log("Coins: " + coins);
-        Debug.Log("Achieved level: " + achievedLevel);
-        Debug.Log("-----------------------------------------");
-    }
-
     public string GetPlayerInfo()
     {
         return playerName + "-" + characterName + "-" + achievedLevel;

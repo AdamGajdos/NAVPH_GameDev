@@ -7,45 +7,39 @@ using UnityEngine.UI;
 
 public class Money : MonoBehaviour
 {
-
     public int value;
 
     void Start(){
         
         value = 0;
 
-        UpdateMoneyText();
+        UpdateText();
     }
-
-
-
     public void AddMoney(int value)
     {
         this.value += value;
 
-        UpdateMoneyText();
+        UpdateText();
     }
 
     public void SpendMoney(int value)
     {
         this.value -= value;
-        UpdateMoneyText();
+        UpdateText();
 
     }
-
-
     public void UpdateValue(int value)
     {
         this.value = value;
 
-        UpdateMoneyText();
+        UpdateText();
     }
 
     public delegate void OnMoneyChange(int value);
 
     public event OnMoneyChange moneyChanged;
 
-    private void UpdateMoneyText()
+    private void UpdateText()
     {
         moneyChanged?.Invoke(value);
     }

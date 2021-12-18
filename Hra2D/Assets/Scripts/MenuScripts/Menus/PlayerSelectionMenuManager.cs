@@ -4,7 +4,7 @@ using TMPro;
 public class PlayerSelectionMenuManager : ChoiceMenu
 {
     public TMP_InputField playerName;
-    private string backupName;      // in case if player doesn't write his/her player name
+    private string backupName;      // in case player doesn't write his/her player name
     public GameStarter gameStarter;
 
     private void Awake()
@@ -30,6 +30,7 @@ public class PlayerSelectionMenuManager : ChoiceMenu
         float startingEnergy = 0;       // default value
         float startingHealth = 200;     // default value
         
+        // pick health value based on hero character -- Igor has more health points than Yelena
         foreach (GameObject obj in gameStarter.playableCharacters.characters){
             if (obj.name == characterName){
                 startingHealth = obj.GetComponent<Health>().maxHealth;
@@ -46,8 +47,6 @@ public class PlayerSelectionMenuManager : ChoiceMenu
             startingHealth,
             achievedLevel
         );
-
-        pd.GetPlayerInfoDebug();        // display data that are about to be saved
 
         SavingSystem.SavePlayerProgress(pd);
 

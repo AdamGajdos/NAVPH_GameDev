@@ -22,8 +22,6 @@ public class UiPlay : MonoBehaviour
     private Ammo playerAmmo;
 
     public GameObject player;
-    void Awake(){ 
-    }
 
     void Start(){
         LoadEverything();

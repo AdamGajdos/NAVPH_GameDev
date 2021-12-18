@@ -44,7 +44,7 @@ public class PauseMenuScript : MonoBehaviour
 
     }
 
-    // Make Resume button unavailable in case if the player have died
+    // Make Resume button unavailable in the case player has died
     public void MakeResumeUnable()
     {
         resumeButton.SetActive(false);

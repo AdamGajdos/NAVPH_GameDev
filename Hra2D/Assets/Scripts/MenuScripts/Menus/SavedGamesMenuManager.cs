@@ -32,8 +32,6 @@ public class SavedGamesMenuManager : ChoiceMenu
 
             int namesCount = namesFound.Length;
 
-            Debug.Log("Number of files found " + namesCount);
-
             for (int i = 0; i < namesCount; i++)
             {
                 string fileFoundPath = namesFound[i];

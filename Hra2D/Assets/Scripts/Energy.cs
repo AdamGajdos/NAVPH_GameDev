@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+// Used for player's sprinting
 public class Energy : MonoBehaviour
 {
 
@@ -16,13 +16,6 @@ public class Energy : MonoBehaviour
         actualEnergy = 0;
 
         UpdateSlider();
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpdateValue(float value)
@@ -39,7 +32,6 @@ public class Energy : MonoBehaviour
     }
 
     public void Decrease(float value){
-        Debug.Log("Uberam energiu");
         if (actualEnergy - value > 0)
             actualEnergy -= value;
         else

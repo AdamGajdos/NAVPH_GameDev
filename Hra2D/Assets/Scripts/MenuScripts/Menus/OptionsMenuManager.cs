@@ -6,6 +6,7 @@ public class OptionsMenuManager : MonoBehaviour
 {
     public GameObject menuPanel;
 
+    // This method is inspired by video: https://www.youtube.com/watch?v=xTvsKDkh2-Q
     public void MuteToggle(bool muted){
         if (muted)
             AudioListener.volume = 0;
@@ -15,8 +16,6 @@ public class OptionsMenuManager : MonoBehaviour
     }
     public void BackToMainMenu()
     {
-        Debug.Log("Goin back to main menu!");
-
         if (menuPanel != null)
         {
             menuPanel.SetActive(true);

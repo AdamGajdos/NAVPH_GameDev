@@ -49,10 +49,7 @@ public class BarrelController : MonoBehaviour
     // Get direction where barrel is pointing
     public Vector2 GetDirection()
     {
-
-        string facing = transform.parent.rotation.eulerAngles.y == 180f ? "left" : "right";
-
-        // Debug.Log(transform.parent.tag + " is Facing " + facing);
+        string facing = transform.parent.rotation.eulerAngles.y == 180f ? "left" : "right";        
 
         bool facingLeft = transform.parent.rotation.eulerAngles.y == 180f;
 

@@ -13,17 +13,17 @@ public class DogController : MonoBehaviour
 
     public Animator animator; 
 
-    public GameObject player;
+    public GameObject player;   // player to be attacked
 
     public Collider2D playerCol;
 
     public Collider2D dogCollider;
 
-    public float walkDist;
+    public float walkDist;  // distance between player and dog when the dog starts walking
 
-    public float runDist;
+    public float runDist;   // distance between player and dog when the dog starts running 
 
-    public float attackDist;
+    public float attackDist;    // distance when dog will bite the player 
 
     public float walkSpeed;
 
@@ -31,9 +31,9 @@ public class DogController : MonoBehaviour
 
     public float damage;
 
-    public float xDistBreak;
+    public float xDistBreak;    // x part of distance between dog and player when dog stops moving -- Player is above the dog/ is standing on the dog
 
-    private float realSpeed = 0f;
+    private float realSpeed = 0f;   // actual speed for movement
 
     
     void Awake()
@@ -90,12 +90,14 @@ public class DogController : MonoBehaviour
         
             movement = new Vector2(horizontalMovement * realSpeed, rb.velocity.y);
 
+            // Turn the dog towards player
             if ((horizontalMovement > 0 && !facingRight) || (horizontalMovement < 0 && facingRight))
                 Turn();
         
+            // set correct animation for moving dog (standing/walking/running)
             animator.SetFloat("Speed", Mathf.Abs(horizontalMovement * realSpeed));
 
-
+            // for animating attack
             if (dist < attackDist){ 
                 player.GetComponentInParent<Health>().HandleHit(damage); 
                 animator.SetBool("Attack", true);
