@@ -2,6 +2,12 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+
+/* 
+ * This script is responsible for saving and loading saved progress of player
+ * It's based on video: https://www.youtube.com/watch?v=XOjd_qU2Ido
+ */
+
 public static class SavingSystem
 {
     private static string path = Application.persistentDataPath + "/";

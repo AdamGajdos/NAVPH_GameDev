@@ -79,7 +79,7 @@ public class ShopMenuScript : MonoBehaviour
         player.transform.position = spawnPoints.spawnpoints[GetLevelNumber(pd.achievedLevel)];
 
         SceneManager.UnloadSceneAsync(currentScene);
-        
+
         player.GetComponent<PlayerController>().InitializePlayer(pd);
 
     }
