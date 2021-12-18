@@ -127,8 +127,8 @@ MonoBehaviour:
   player: {fileID: 0}
   playerCol: {fileID: 0}
   dogCollider: {fileID: 1791884356}
-  walkDist: 11
-  runDist: 8
+  walkDist: 9
+  runDist: 6
   attackDist: 0.1
   walkSpeed: 3
   runSpeed: 5.3

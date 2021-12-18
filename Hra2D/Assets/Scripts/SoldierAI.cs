@@ -5,14 +5,14 @@ using UnityEngine;
 public class SoldierAI : MonoBehaviour
 {
     public GameObject barrel;
-    public Vector2 spotingArea;
+    public Vector2 spotingArea;     // area where enemy gets spotted
 
     public float nextTimeToFire;
     public float fireRate;
 
     private void Awake()
     {
-        spotingArea = new Vector2(20f, 3f);     // <-10f ; 10f> Horizontally  <-1.5f;1.5f> Vertically   
+        spotingArea = new Vector2(26f, 3f);     // <-10f ; 10f> Horizontally  <-1.5f;1.5f> Vertically 
         nextTimeToFire = 0f;
         fireRate = 1f;
     }

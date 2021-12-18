@@ -11,6 +11,7 @@ TagManager:
   - FxTemporaire
   - Bullet
   - Collectible
+  - Wire
   layers:
   - Default
   - TransparentFX

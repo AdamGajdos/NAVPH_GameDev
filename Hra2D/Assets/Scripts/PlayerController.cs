@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speedBasic;
     public float speedSprint;
     public float jumpForce = 300f;
+    public float deathFallDistance = -50f;
 
     public string characterName;
     public string playerName;
@@ -37,9 +38,9 @@ public class PlayerController : MonoBehaviour
         listGround = GameObject.FindGameObjectsWithTag("Ground");
     }
 
-    // Start is called before the first frame update
     void Start()
     {
+        // basic initialization
         speed = speedBasic;
         facingRight = true;
         movement = Vector2.zero;
@@ -48,20 +49,19 @@ public class PlayerController : MonoBehaviour
         barrel = GameObject.Find("Barrel");
     }
 
-    // Update is called once per frame
     void Update()
     {
         float horizontalMovement = Input.GetAxis("Horizontal");
         
         movement = new Vector2(horizontalMovement * speed, rb.velocity.y);
 
-        
+        // Animate player
         if (IsOnGround())
             animator.SetFloat("Speed", Mathf.Abs(horizontalMovement * speed));
         else
             animator.SetFloat("Speed", 0);
             
-
+        // Rotate player to the right direction(where he/she is facing)
         if (horizontalMovement > 0 && !facingRight)
         {
             Turn();
@@ -81,18 +81,21 @@ public class PlayerController : MonoBehaviour
         //     animator.SetFloat("Speed", Mathf.Abs(horizontalMovement * speed));
         // }
 
+        // Jumping
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround())
         {
             rb.AddForce(Vector2.up * jumpForce);
         }
             
-
+        // Shooting
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             if (ammo.value > 0 && barrel.GetComponent<BarrelController>().Shoot())
                 ammo.Use();
         }
 
+
+        // Sprinting section start
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (energy.HasEnergy())
@@ -104,6 +107,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = speedBasic;
+        }
+
+        // Sprinting section end
+
+
+        // Check whether player has fallen
+        if (transform.position.y <= deathFallDistance)
+        {
+            Destroy(gameObject);
+            Time.timeScale = 0f;
         }
 
     }
@@ -131,6 +144,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = movement;
     }
 
+    // Check if player is touching ground. Using for jumping and animating purpose
     private bool IsOnGround()
     {
         /*
@@ -166,12 +180,14 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    // Rotate player if his/her movement is different than their dirrection
     private void Turn()
     {
         facingRight = !facingRight;
         transform.Rotate(Vector2.up, 180f);
     }
 
+    // initialize saved player data
     public void InitializePlayer(PlayerData data)
     {
         characterName = data.characterName;
