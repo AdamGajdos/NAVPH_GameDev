@@ -127,8 +127,8 @@ MonoBehaviour:
   player: {fileID: 0}
   playerCol: {fileID: 0}
   dogCollider: {fileID: 1791884356}
-  walkDist: 9
-  runDist: 6
+  walkDist: 10
+  runDist: 7
   attackDist: 0.1
   walkSpeed: 3
   runSpeed: 5.3
@@ -163,9 +163,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23524976, y: 0.0137732625}
+  m_Offset: {x: -0.22312011, y: 0.02319899}
   serializedVersion: 2
-  m_Radius: 0.11224714
+  m_Radius: 0.10466614
 --- !u!95 &1791884350
 Animator:
   serializedVersion: 3

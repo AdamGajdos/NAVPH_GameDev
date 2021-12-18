@@ -44,7 +44,6 @@ public class DogController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         SetMovement();
@@ -74,15 +73,11 @@ public class DogController : MonoBehaviour
     {
         if (player != null) // Fix for: when player dies the console is printing null error
         {
-            // float dist = Vector3.Distance(transform.position, player.transform.position);
 
             float dist = Physics2D.Distance(playerCol, dogCollider).distance;
 
-            // float yDif = player.transform.position.y - transform.position.y;
             float xDif = player.transform.position.x - transform.position.x;
 
-
-            // float yDist = Mathf.Abs(yDif);
             float xDist = Mathf.Abs(xDif);
 
             SetSpeed(dist, xDist);

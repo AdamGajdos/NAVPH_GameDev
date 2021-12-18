@@ -944,7 +944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5002356657529401722, guid: 5f7825a3d2a1fb84da9a1f685ba4440c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5646192395070225091, guid: 5f7825a3d2a1fb84da9a1f685ba4440c, type: 3}
       propertyPath: optionMenu
@@ -1054,10 +1054,6 @@ PrefabInstance:
     - target: {fileID: 5002356657529401722, guid: d1afbfa8d28838541b9529fef4862af9, type: 3}
       propertyPath: m_Name
       value: OptionsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5002356657529401722, guid: d1afbfa8d28838541b9529fef4862af9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8927135354699207188, guid: d1afbfa8d28838541b9529fef4862af9, type: 3}
       propertyPath: previousPanel
