@@ -8,9 +8,9 @@ public class MainMenuManager : MonoBehaviour
     public GameObject optionMenu;
     public GameObject gameSelectionMenu;
 
+    // Display menu where player can pick between Start of new game and Load the previously saved game
     public void PlayGame()
     {
-        Debug.Log("Gonna list saved games and new game possibility");
         if (gameSelectionMenu != null)
         {
             gameSelectionMenu.SetActive(true);
@@ -18,9 +18,9 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    // Display options Menu
     public void SeeOptions()
     {
-        Debug.Log("Gonna display controls of game");
         if (optionMenu != null)
         {
             optionMenu.SetActive(true);
@@ -28,9 +28,9 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    // Quit the game
     public void EndGame()
     {
-        Debug.Log("Im quitting ... In built version it should work!");
         Application.Quit();
     }
 }

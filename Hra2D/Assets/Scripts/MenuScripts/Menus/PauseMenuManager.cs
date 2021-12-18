@@ -22,13 +22,13 @@ public class PauseMenuManager : MonoBehaviour
 
     private void Update()
     {
-
+        // if player pressed ESC then pause the game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseMenu?.GetComponentInChildren<PauseMenuScript>()?.HandleMenuInvocation();
         }
 
-
+        // when player dies show death menu
         if (player == null && !isPlayerDead)
         {
             isPlayerDead = true;

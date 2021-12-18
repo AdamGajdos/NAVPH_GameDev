@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameStarter : MonoBehaviour
 {
-    public PlayableCharacters playableCharacters;
-    public LevelSpawnPoints spawnpoints;
+    public PlayableCharacters playableCharacters;   // array of playable characters. Needed for instantiating
+    public LevelSpawnPoints spawnpoints;        // spawn points for each level
 
+    // Instantiate chosen player.
     private GameObject GetChosenPlayer(string characterName)
     {
         int indexChosen = 0;        // by default return 1-st playable character
@@ -23,6 +24,13 @@ public class GameStarter : MonoBehaviour
         return Instantiate(playableCharacters.characters[indexChosen]);
     }
 
+    // This is inspired by:
+    //      https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html,
+    //      https://stackoverflow.com/questions/45798666/move-transfer-gameobject-to-another-scene, 
+    //      https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.MoveGameObjectToScene.html
+    //
+    //      This will load save based on player's name, instantiate Hero character(actually Igor or Yelena), initialize saved player's data
+    //      and move hero to new scene(at the start of achieved level)
     public IEnumerator PrepareGame(string player_name)
     {
         if (playableCharacters.characters.Length > 0)
