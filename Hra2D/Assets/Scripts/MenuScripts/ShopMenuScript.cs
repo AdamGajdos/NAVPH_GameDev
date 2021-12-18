@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShopMenuScript : MonoBehaviour
 {
@@ -21,6 +22,16 @@ public class ShopMenuScript : MonoBehaviour
 
     private Ammo pa;
 
+    public GameObject buyButton;
+
+    public GameObject shellsImage;
+
+    public GameObject nextLevelButton;
+
+    public GameObject mainMenuButton;
+
+    public TMP_Text message;
+
     void Start(){
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
@@ -30,6 +41,15 @@ public class ShopMenuScript : MonoBehaviour
 
         currentAmmo.text = "Currently have: " + pa.value;
         currentMoney.text = "Rubles remaining: " + pm.value;
+    }
+
+    public void LastLevel(){
+        buyButton.SetActive(false);
+        shellsImage.SetActive(false);
+        nextLevelButton.SetActive(false);
+        message.text = "You have escaped from USSR\nCongratulations";
+
+        mainMenuButton.transform.position = new Vector3(0, mainMenuButton.transform.position.y, mainMenuButton.transform.position.z);
     }
     
     public void BackToMainMenu()

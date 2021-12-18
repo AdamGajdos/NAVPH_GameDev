@@ -883,6 +883,11 @@ MonoBehaviour:
   currentAmmo: {fileID: 5336726229007945690}
   price: 5
   spawnPoints: {fileID: 11400000, guid: a2252b7da9e70954abf3d626df7497e3, type: 2}
+  buyButton: {fileID: 7383793853501249666}
+  shellsImage: {fileID: 6120577549013335792}
+  nextLevelButton: {fileID: 1279162735253410483}
+  mainMenuButton: {fileID: 5002356657261861968}
+  message: {fileID: 5002356656008932776}
 --- !u!1 &5002356657261861968
 GameObject:
   m_ObjectHideFlags: 0

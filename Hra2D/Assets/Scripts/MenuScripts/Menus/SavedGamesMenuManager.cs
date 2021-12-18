@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 using TMPro;
+using System.Collections;
 
 public class SavedGamesMenuManager : ChoiceMenu
 {
@@ -10,6 +11,10 @@ public class SavedGamesMenuManager : ChoiceMenu
     public GameObject listItem;
     public GameObject listedSavesBoard;
     public GameStarter gameStarter;
+
+    public int numberOfLevels;
+
+    public TMP_Text warning;
 
     private void Awake()
     {
@@ -60,22 +65,35 @@ public class SavedGamesMenuManager : ChoiceMenu
     // prepare selected saved game
     public void SelectGame(string chosenSave)
     {
+        warning.gameObject.SetActive(false);
+
         string selectedSave = chosenSave.Split('-')[0];     // get player name
 
-        if (gameStarter != null)
-        {
-            StartCoroutine(gameStarter.PrepareGame(selectedSave));    // load appropriate saved game
-        }
-        else
-        {
-            Debug.LogError("Game starter not found!!");
-        }
+        int selectedLevel = int.Parse((chosenSave.Split('-')[2]).Split('_')[1]);    // get achieved level
 
+
+        if (selectedLevel >= numberOfLevels){
+            StartCoroutine(ShowCompletion());
+        }
+        else {
+            if (gameStarter != null)
+                StartCoroutine(gameStarter.PrepareGame(selectedSave));    // load appropriate saved game
+            else
+                Debug.LogError("Game starter not found!!");
+        }
     }
 
     // Handle click on button
     public override void HandleSelected(string choice)
     {
         SelectGame(choice);
+    }
+
+    public IEnumerator ShowCompletion(){
+        warning.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f); 
+
+        warning.gameObject.SetActive(false);
     }
 }
